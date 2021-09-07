@@ -1,0 +1,350 @@
+:root {
+    --body: rgba(224, 220, 211, 0.192);
+    --text-color: rgba(255, 255, 255, 1);
+    --table: rgba(95, 75, 48, 0.1);
+    --circle-front: rgba(91, 192, 222, 0.8);
+    --circle-back: rgba(91, 192, 222, 0.3);
+    --circle-border: rgba(91, 192, 222, 0.5);
+    --inner-circle: rgba(91, 192, 222, 0.8);
+    --inner-circle-border: rgba(91, 192, 222, 1);
+    --danger: rgba(217, 83, 79, 0.5);
+    --warning: rgba(240, 173, 78, 0.5);
+    --info: rgba(91, 192, 222, 0.5);
+    --success: rgba(92, 184, 92, 0.8);
+    --success-hover: rgba(67, 126, 67, 0.8);
+    --box-shadow: 0px 3px 5px 3px rgba(86, 88, 88, 0.2);
+}
+
+body {
+    background-color: var(--body);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/*Info and Button row*/
+
+/*Info and Button row box*/
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 20px 0px 20px;
+}
+
+/*info and button*/
+
+.actions button, .actions p {
+    position: relative;
+    width: 150px;
+    padding: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 3px;
+
+}
+
+/*button*/
+
+.actions button {
+    color: var(--text-color);
+    background: var(--success);
+    border: 1px var(--success) solid;
+    font-size: 1em;
+}
+
+/*info*/
+
+.actions p {
+    text-align: center;
+    color: var(--text-color);
+    background: var(--info);
+    border: 1px var(--info) solid;
+    font-size: 0.8em;
+}
+
+/*button hover when enabled*/
+
+.actions button:hover:enabled {
+    background: var(--success-hover) !important;
+    border: 1px var(--success-hover) solid;
+    cursor: pointer;
+}
+
+/*Table and Circles*/
+
+/*table*/
+
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    margin: 0px 20px 0px 20px;
+    border-radius: 5px;
+    background-color: var(--table);
+    border: 1px var(--table) solid;
+    box-shadow: var(--box-shadow);
+}
+
+/*circles*/
+
+.table .circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+/*circle front and back*/
+
+.circle-front, .circle-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: var(--inner-circle) 1px solid;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/*circle front*/
+.circle-front {
+    background: var(--circle-front);
+}
+
+/*circle back*/
+.circle-back {
+    background: var(--circle-back);
+    transform: rotateY(180deg);
+}
+
+/*the inner circle, not the band :)*/
+.table .circle .circle-back div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: var(--inner-circle);
+    border: var(--inner-circle) 1px solid;
+}
+
+/*Media Queries*/
+
+@media only screen and (max-width: 768px) {
+    /*Info and Button row box*/
+    .actions {
+        margin: 0;
+        flex-direction: column-reverse;
+    }
+    /*info and button*/
+    .actions button, .actions p {
+        border-radius: 0;
+    }
+   /*button*/
+   .actions button{
+    width: 100%;
+  
+}
+    /*table*/
+    .table {
+        margin: 0;
+        border-radius: 0;
+    }
+    /*circles*/
+    .table .circle {
+        width: 10vw;
+        height: 10vw;
+    }
+    /*the inner circle*/
+    .table .circle .circle-back div {
+        width: 2vw;
+        height: 2vw;
+    }
+}
+    /*Animations*/
+    /*the movement of the left circle*/
+    .left-circle-moves {
+        -webkit-animation-name: spin-x, spin-x, left-circle-moves;
+                animation-name: spin-x, spin-x, left-circle-moves;
+        -webkit-animation-duration: 0.5s, 0.5s, 1s;
+                animation-duration: 0.5s, 0.5s, 1s;
+        -webkit-animation-delay: 0.2s, 0.7s, 1.5s;
+                animation-delay: 0.2s, 0.7s, 1.5s;
+        -webkit-animation-direction: normal, reverse, normal;
+                animation-direction: normal, reverse, normal;
+    }
+    .middle-circle-moves {
+        -webkit-animation-name: spin-x, spin-x, middle-circle-moves;
+                animation-name: spin-x, spin-x, middle-circle-moves;
+        -webkit-animation-duration: 0.5s, 0.5s, 1s;
+                animation-duration: 0.5s, 0.5s, 1s;
+        -webkit-animation-delay: 0.1s, 0.6s, 1.5s;
+                animation-delay: 0.1s, 0.6s, 1.5s;
+        -webkit-animation-direction: normal, reverse, normal;
+                animation-direction: normal, reverse, normal;
+    }
+    .right-circle-moves {
+        -webkit-animation-name: spin-x, spin-x, right-circle-moves;
+                animation-name: spin-x, spin-x, right-circle-moves;
+        -webkit-animation-duration: 0.5s, 0.5s, 1s;
+                animation-duration: 0.5s, 0.5s, 1s;
+        -webkit-animation-delay: 0s, 0.5s, 1.5s;
+                animation-delay: 0s, 0.5s, 1.5s;
+        -webkit-animation-direction: normal, reverse, normal;
+                animation-direction: normal, reverse, normal;
+    }
+    /*the spin of the circles*/
+    .spin-x {
+        -webkit-animation-name: spin-x;
+                animation-name: spin-x;
+        -webkit-animation-duration: 0.5s;
+                animation-duration: 0.5s;
+        -webkit-animation-delay: 0s;
+                animation-delay: 0s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+
+    }
+    .spin-y {
+        -webkit-animation-name: spin-y;
+                animation-name: spin-y;
+        -webkit-animation-duration: 0.5s;
+                animation-duration: 0.5s;
+        -webkit-animation-delay: 0s;
+                animation-delay: 0s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+    }
+
+    /*Keyframes*/
+    @-webkit-keyframes spin-x {
+        0% {
+            -webkit-transform: rotateY(0deg);
+        }
+        100% {
+            -webkit-transform: rotateY(180deg);
+        }
+    }
+    @keyframes spin-x {
+        0% {
+            -webkit-transform: rotateY(0deg);
+        }
+        100% {
+            -webkit-transform: rotateY(180deg);
+        }
+    }
+    @-webkit-keyframes spin-y {
+        0% {
+            -webkit-transform: rotateX(0deg) translateY(0);
+        }
+        100% {
+            -webkit-transform: rotateX(180deg) translateY(20px);
+        }
+    }
+    @keyframes spin-y {
+        0% {
+            -webkit-transform: rotateX(0deg) translateY(0);
+        }
+        100% {
+            -webkit-transform: rotateX(180deg) translateY(20px);
+        }
+    }
+    @-webkit-keyframes left-circle-moves {
+        0% {
+            -webkit-transform: translateX(0px);
+        }
+        20% {
+            -webkit-transform: rotate(0deg) translateX(-140px) translateY(-50px) rotate(0deg);
+        }
+        90% {
+            -webkit-transform: rotate(360deg) translateX(-140px) translateY(-50px) rotate(-360deg);
+        }
+        100% {
+            -webkit-transform: translateX(140px) translateY(0px);
+        }
+    }
+    @keyframes left-circle-moves {
+        0% {
+            -webkit-transform: translateX(0px);
+        }
+        20% {
+            -webkit-transform: rotate(0deg) translateX(-140px) translateY(-50px) rotate(0deg);
+        }
+        90% {
+            -webkit-transform: rotate(360deg) translateX(-140px) translateY(-50px) rotate(-360deg);
+        }
+        100% {
+            -webkit-transform: translateX(140px) translateY(0px);
+        }
+    }
+    @-webkit-keyframes middle-circle-moves {
+        0% {
+            -webkit-transform: translateY(0px);
+        }
+        30% {
+            -webkit-transform: rotate(0deg) translateY(140px) rotate(0deg);
+        }
+        90% {
+            -webkit-transform: rotate(-360deg) translateY(40px) rotate(360deg);
+        }
+        100% {
+            -webkit-transform: translateY(0px);
+        }
+    }
+    @keyframes middle-circle-moves {
+        0% {
+            -webkit-transform: translateY(0px);
+        }
+        30% {
+            -webkit-transform: rotate(0deg) translateY(140px) rotate(0deg);
+        }
+        90% {
+            -webkit-transform: rotate(-360deg) translateY(40px) rotate(360deg);
+        }
+        100% {
+            -webkit-transform: translateY(0px);
+        }
+    }
+    @-webkit-keyframes right-circle-moves {
+        0% {
+            -webkit-transform: translateX(0px);
+        }
+        20% {
+            -webkit-transform: rotate(0deg) translateX(140px) translateY(50px) rotate(0deg);
+        }
+        90% {
+            -webkit-transform: rotate(360deg) translateX(140px) translateY(50px) rotate(-360deg);
+        }
+        100% {
+            -webkit-transform: translateX(-140px) translateY(0px);
+        }
+    }
+    @keyframes right-circle-moves {
+        0% {
+            -webkit-transform: translateX(0px);
+        }
+        20% {
+            -webkit-transform: rotate(0deg) translateX(140px) translateY(50px) rotate(0deg);
+        }
+        90% {
+            -webkit-transform: rotate(360deg) translateX(140px) translateY(50px) rotate(-360deg);
+        }
+        100% {
+            -webkit-transform: translateX(-140px) translateY(0px);
+        }
+    }
